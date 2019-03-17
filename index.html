@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+ <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135063151-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135063151-1');
+</script>
+  <title>SRM Attendance Calculator</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" /><body>
+ <div class="bag">
+  <div class="home">
+<br/>
+<div class="head">                    Attendance Calculator</div>
+<div class="stuff">
+<br/>
+ Attendance Percentage:
+<input type="text" id="txt1" name="text1">
+<br/>
+<br/>
+No. of classes missed:
+<input type="text" id="txt2" name="text2">
+<br/>
+<br/>
+ <button onclick="myFunction()" id="but">Proceed</button>
+<br/>
+<br/>
+</div>
+<p id="demo"></p>
+<p id="dem"></p>
+</div>
+  </div>
+<script>
+  function myFunction() {
+    var y = document.getElementById("txt1").value;
+    var z = document.getElementById("txt2").value;
+    var a = +y;
+    var b = +z;
+   if(a<100){ 
+    var ab = 100-a;
+    var tn = (b*100)/ab;
+    var x = Math.trunc((tn/4)-b);
+if(x>0){document.getElementById("demo").innerHTML = "  No of class you can safely miss: "+x;
+        document.getElementById("dem").innerHTML = "(Safely: without reaching below 75%)";}
+else{ if(x==0 ){document.getElementById("demo").innerHTML = "  No of class you can safely miss: 0";
+document.getElementById("dem").innerHTML = "(Safely: without reaching below 75%)";}
+   else if(x<0 && a<75){
+      x=Math.trunc((b*4)-tn);
+      document.getElementById("demo").innerHTML = "No of classes required to reach 75%: "+x;     
+      document.getElementById("dem").innerHTML = "";    
+       }
+   }
+    }
+  else if(a==100){
+  document.getElementById("demo").innerHTML = "!!Go home and sleep!!";
+  }
+  else{
+  document.getElementById("demo").innerHTML = "Invalid Details!";
+   }
+  }
+</script>
+ </body>
+</html>
